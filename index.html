@@ -10,7 +10,28 @@
     <script src="https://kit.fontawesome.com/a3bae6fc74.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header class="title">To-do list ✏️</header>
+    <section class="list">
+        <header class="header">To-do List ✏️</header>
+        <ul class="items">
+            <li class="item__row">
+                <div class="item">
+                    <span class="item__name">milk</span>
+                    <button class="item__delete">
+                        <i class="fa-solid fa-trash-can fa-xl"></i>
+                    </button>
+                </div>
+            </li>
+        </ul>
+        <footer class="footer">
+            <input type="text" class="footer__input" placeholder="끝내야 할 일...">
+            <button class="footer__button">
+                <i class="fa-solid fa-circle-plus"></i> add
+            </button>
+        </footer>
+    </section>
+
+
+  <header class="title">To-do list</header>
 
   <div class="tasks">
   </div>
