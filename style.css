@@ -1,0 +1,129 @@
+@import "reset.css";
+
+html {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #edeff0;
+  text-align: center;
+}
+
+.new_task {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background-color: #80a6ad;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.list_input {
+  width: 75%;
+  height: 25px;
+  padding: 7px;
+  color: #405357;
+  font-weight: 500;
+  position: relative;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  border: 2px solid #d1d3d4;
+  transition: 0.2s ease-in-out;
+}
+
+.list_input:focus {
+  outline: none;
+  border-color: #405357;
+}
+
+.add_btn {
+  margin-left: 10px;
+  position: relative;
+  float: right;
+  font-weight: 500;
+  font-size: 16px;
+  background-color: #567176;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  outline: none;
+  width: 15%;
+  height: 45px;
+  border-radius: 50%;
+  font-family: "Poppins", sans-serif;
+  transition: 0.15s ease-in-out;
+}
+
+.add_btn:hover {
+  background-color: #405357;
+}
+
+.background_photo {
+  opacity: 0.2;
+  position: fixed;
+  padding: auto;
+  margin-top: 500px;
+  z-index: 100;
+}
+
+.title {
+  background-color: #80a6ad;
+  padding: 25px;
+  font-size: x-large;
+  color: rgb(255, 255, 255);
+}
+
+.tasks {
+  margin: auto;
+  margin-top: 10px;
+  display: block;
+  width: 98%;
+  height: 50px;
+}
+
+.task_box {
+  border: 2px solid #80a6ad;
+  border-radius: 10px;
+  padding: 10px 20px;
+  justify-content: space-between;
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+.delete {
+  background-color: #edeff0;
+  border: none;
+  cursor: pointer;
+  color: lightgray;
+  transition: 0.2s ease-in-out;
+}
+
+.delete:hover {
+  color: rgb(220, 80, 56);
+  transform: scale(1.09);
+}
+
+#no-mobile {
+  position: absolute;
+  z-index: 99;
+  height: 100%;
+  width: 100%;
+  background-color: #b5d4f0;
+  display: flex;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  color: whitesmoke;
+}
+
+@media screen and (max-width: 550px) {
+  #no-mobile {
+    display: none;
+  }
+}
