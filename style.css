@@ -42,7 +42,7 @@ button {
   background-color: rgb(254, 247, 255);
   border-radius: 30px;
   color: rgb(81, 81, 81);
-  font-size: larger;
+  font-size: medium;
   -webkit-box-shadow: 10px 10px 5px 0px rgba(150, 150, 150, 1);
   -moz-box-shadow: 10px 10px 5px 0px rgba(150, 150, 150, 1);
   box-shadow: 10px 10px 5px 0px rgba(150, 150, 150, 1);

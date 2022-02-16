@@ -7,7 +7,7 @@ const addBtn = document.querySelector('.footer__button');
 function onAdd() {
     // 1. 사용자가 입력한 텍스트를 받아와야 함.
     const text = input.value;
-    console.log(text);
+    // console.log(text);
     if(text === '') {
         input.focus();
         alert("해야할 일을 입력하세요!");  
@@ -18,7 +18,9 @@ function onAdd() {
     const item = createItem(text);
     // 3. items 컨테이너 안에 새로 만든 아이템을 추가
     items.appendChild(item);
-    // 4. 인풋을 초기화 한다.
+    // 4. 새로 추가된 아이템으로 스크롤링
+    item.scrollIntoView({block: 'nearest'});
+    // 5. 인풋을 초기화 한다.
     input.value = '';
     input.focus();
 };
