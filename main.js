@@ -1,33 +1,65 @@
 'use strict';
 
-document.querySelector('.add_btn').onclick = function(){
-    if(document.querySelector('.list_input').value.length == 0){
-        alert("바보! 해야할 일을 입력하세요!")
+const items = document.querySelector('.items');
+const input = document.querySelector('.footer__input');
+const addBtn = document.querySelector('.footer__button');
+
+function onAdd() {
+    // 1. 사용자가 입력한 텍스트를 받아와야 함.
+    const text = input.value;
+    console.log(text);
+    if(text === '') {
+        input.focus();
+        alert("해야할 일을 입력하세요!");  
+        return;  
+        
     }
-    else{
-        document.querySelector('.tasks').innerHTML += `
-            <div class="tasks">
-             <span class="task_box">
-                <span class="taskname">
-                    ${document.querySelector('.new_task input').value}
-                </span>
-                <button class="delete">
-                <i class="fa-solid fa-trash-can fa-xl"></i>
-                </button>
-             </span>
-            </div>
-        `;
+    // 2. 새로운 아이템을 만듦 (텍스트와 삭제 버튼 동시)
+    const item = createItem(text);
+    // 3. items 컨테이너 안에 새로 만든 아이템을 추가
+    items.appendChild(item);
+    // 4. 인풋을 초기화 한다.
+    input.value = '';
+    input.focus();
+};
 
-        var current_tasks = document.querySelectorAll(".delete");
-        for(var i=0; i<current_tasks.length; i++){
-            current_tasks[i].onclick = function(){
-                this.parentNode.remove();
-            }
-        }
+function createItem(text) {
+    const itemRow = document.createElement('li');
+    itemRow.setAttribute('class', 'item__row');
 
-      
+    const item = document.createElement('div');
+    item.setAttribute('class', 'item');
 
- 
-    }
+    const name = document.createElement('span');
+    name.setAttribute('class', 'item__name');
+    name.innerText = text;
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.setAttribute('class', 'item__delete');
+    deleteBtn.innerHTML = '<i class="fa-solid fa-trash-can fa-xl"></i>';
+    deleteBtn.addEventListener('click', () => {
+        items.removeChild(itemRow);
+    });
+
+    const itemDivider = document.createElement('div');
+    itemDivider.setAttribute('class', 'item__divider');
+
+
+item.appendChild(name);
+item.appendChild(deleteBtn);
+
+itemRow.appendChild(item);
+itemRow.appendChild(itemDivider);
+return itemRow;
+
 }
-    
+
+addBtn.addEventListener('click', () => {
+    onAdd();
+});
+
+input.addEventListener('keypress', (event) => {
+    if(event.key === 'Enter') {
+        onAdd();
+    }
+}) 
