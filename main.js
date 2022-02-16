@@ -12,7 +12,6 @@ function onAdd() {
         input.focus();
         alert("해야할 일을 입력하세요!");  
         return;  
-        
     }
     // 2. 새로운 아이템을 만듦 (텍스트와 삭제 버튼 동시)
     const item = createItem(text);
