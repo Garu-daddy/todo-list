@@ -15,7 +15,7 @@ html {
 body {
   background-color: rgb(242, 225, 242);
   text-align: center;
-  padding: 20% 0;
+  padding: 3% 0;
 }
 
 button {
@@ -70,7 +70,7 @@ button {
 .min {
   margin-right: 8px;
   font-weight: 700;
-  color: rgb(254, 95, 174);
+  color: rgb(95, 123, 179);
 }
 
 .items {
