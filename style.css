@@ -106,6 +106,13 @@ button {
   align-items: center;
 }
 
+.new-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .footer__input {
   width: 70%;
   height: 32px;

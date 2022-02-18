@@ -2,13 +2,18 @@
 
 const items = document.querySelector('.items');
 const input = document.querySelector('.footer__input');
+const form = document.querySelector('.new-form');
 const addBtn = document.querySelector('.footer__button');
 const deleteBtn = document.querySelector('.item__delete');
+
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    onAdd();
+});
 
 function onAdd() {
     // 1. 사용자가 입력한 텍스트를 받아와야 함.
     const text = input.value;
-    // console.log(text);
     if(text === '') {
         input.focus();
         alert("해야할 일을 입력하세요!");  
@@ -44,21 +49,21 @@ return itemRow;
 
 }
 
-addBtn.addEventListener('click', () => {
-    onAdd();
-});
+// addBtn.addEventListener('click', () => {
+//     onAdd();
+// });
 
 
-input.addEventListener('keydown', (event) => {
-    if(event.isComposing) {
-        return;
-    }
-    if(event.key === 'Enter') {
-        onAdd();
-    }
-});
+// input.addEventListener('keydown', (event) => {
+//     if(event.isComposing) {
+//         return;
+//     }
+//     if(event.key === 'Enter') {
+//         onAdd();
+//     }
+// });
 
-items.addEventListener('click', event => {
+items.addEventListener('click', (event) => {
     const id = event.target.dataset.id;
     if(id) {
         const toBeDeleted = document.querySelector(`.item__row[data-id="${id}"]`);
