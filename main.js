@@ -1,41 +1,25 @@
-'use strict';
+const items = document.querySelector(".items");
+const input = document.querySelector(".footer__input");
+const form = document.querySelector(".new-form");
+const addBtn = document.querySelector(".footer__button");
+const deleteBtn = document.querySelector(".item__delete");
 
-const items = document.querySelector('.items');
-const input = document.querySelector('.footer__input');
-const form = document.querySelector('.new-form');
-const addBtn = document.querySelector('.footer__button');
-const deleteBtn = document.querySelector('.item__delete');
+function createId() {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+    let r = (Math.random() * 16) | 0,
+      v = c == "x" ? r : (r & 0x3) | 0x8;
 
-form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    onAdd();
-});
+    return v.toString(16);
+  });
+}
 
-function onAdd() {
-    // 1. 사용자가 입력한 텍스트를 받아와야 함.
-    const text = input.value;
-    if(text === '') {
-        input.focus();
-        alert("해야할 일을 입력하세요!");  
-        return;  
-    }
-    // 2. 새로운 아이템을 만듦 (텍스트와 삭제 버튼 동시)
-    const item = createItem(text);
-    // 3. items 컨테이너 안에 새로 만든 아이템을 추가
-    items.appendChild(item);
-    // 4. 새로 추가된 아이템으로 스크롤링
-    item.scrollIntoView({block: 'nearest'});
-    // 5. 인풋을 초기화 한다.
-    input.value = '';
-    input.focus();
-};
-
-let id = 0; // UUID
 function createItem(text) {
-    const itemRow = document.createElement('li');
-    itemRow.setAttribute('class', 'item__row');
-    itemRow.setAttribute('data-id', id);
-    itemRow.innerHTML = `
+  let id = createId();
+  const itemRow = document.createElement("li");
+
+  itemRow.setAttribute("class", "item__row");
+  itemRow.setAttribute("data-id", id);
+  itemRow.innerHTML = `
     <div class="item">
                 <span class="item__name">${text}</span>
                 <button class="item__delete">
@@ -45,29 +29,37 @@ function createItem(text) {
             <div class="item__divider"></div>
     `;
 
-return itemRow;
-
+  return itemRow;
 }
 
-// addBtn.addEventListener('click', () => {
-//     onAdd();
-// });
+function onAdd() {
+  const text = input.value;
 
+  if (text === "") {
+    alert("해야할 일을 입력하세요!");
+    return;
+  }
 
-// input.addEventListener('keydown', (event) => {
-//     if(event.isComposing) {
-//         return;
-//     }
-//     if(event.key === 'Enter') {
-//         onAdd();
-//     }
-// });
+  const item = createItem(text);
 
-items.addEventListener('click', (event) => {
-    const id = event.target.dataset.id;
-    if(id) {
-        const toBeDeleted = document.querySelector(`.item__row[data-id="${id}"]`);
-        toBeDeleted.remove();
-    }
+  items.appendChild(item);
+  item.scrollIntoView({ block: "nearest" });
+  input.value = "";
+  input.focus();
+}
 
+function onDelete(event) {
+  const id = event.target.dataset.id;
+
+  if (id) {
+    const toBeDeleted = document.querySelector(`.item__row[data-id="${id}"]`);
+
+    toBeDeleted.remove();
+  }
+}
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  onAdd();
 });
+items.addEventListener("click", (event) => onDelete(event));
